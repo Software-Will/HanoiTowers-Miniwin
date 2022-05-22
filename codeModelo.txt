@@ -1,0 +1,64 @@
+// Code Anampa
+
+//Logica
+#include <iostream>
+using namespace std;
+ 
+void hanoi(int num,char A,char C,char B)
+{
+    if(num==1)
+    {
+            cout<<"Mueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
+             
+    }
+    else
+    {
+        hanoi(num-1,A,B,C);
+        cout<<"Mueva el bloque "<<num<<" desde "<<A<<" hasta  "<<C<<endl;
+        hanoi(num-1,B,C,A);
+    }
+}
+ 
+int main()
+{
+        int n;
+        char A,B,C;
+ 
+        cout<<"Los clavijas son A B C\n";
+        cout<<"Numero de discos: ";
+        cin>>n;
+        hanoi(n,'A','C','B');
+        return 0;
+}
+
+//Miniwin
+#include "miniwin.h"
+using namespace miniwin;
+
+int main()
+{
+	int ancho = 600;
+	int alto = 400;
+	vredimensiona(ancho, alto);
+	// Fondo
+	color(NEGRO);
+	rectangulo_lleno(0, 0, 600, 400);
+
+	// Ejes, torres o clavijas (3)
+	color(BLANCO);
+	rectangulo_lleno(95, 100, 105, 380);
+	rectangulo_lleno(295, 100, 305, 380);
+	rectangulo_lleno(495, 100, 505, 380);
+	rectangulo_lleno(0, 380, 600, 390); // BASE!
+	
+	// Discos (3)
+	color(VERDE);
+	rectangulo_lleno(70, 320, 130, 340);
+	color(AMARILLO);
+	rectangulo_lleno(50, 340, 150, 360);
+	color(AZUL);
+	rectangulo_lleno(30, 360, 170, 380);
+
+	refresca();
+	return 0;
+}
